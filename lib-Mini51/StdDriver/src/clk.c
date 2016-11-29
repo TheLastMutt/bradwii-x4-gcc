@@ -188,7 +188,7 @@ void CLK_SetModuleClock(uint32_t u32ModuleIdx, uint32_t u32ClkSrc, uint32_t u32C
   if(MODULE_CLKSEL_Msk(u32ModuleIdx)!=MODULE_NoMsk)
   {
     u32sel = (uint32_t)&CLK->CLKSEL0+((MODULE_CLKSEL(u32ModuleIdx))*4);
-    u32tmp = *(volatile uint32_t *)(u32div);
+    u32tmp = *(volatile uint32_t *)(u32sel);
     u32tmp = ( u32tmp & ~MODULE_CLKSEL_Msk(u32ModuleIdx)<<MODULE_CLKSEL_Pos(u32ModuleIdx) ) | u32ClkSrc;    
     *(volatile uint32_t *)(u32sel) = u32tmp;
   }
